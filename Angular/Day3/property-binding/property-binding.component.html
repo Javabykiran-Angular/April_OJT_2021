@@ -1,0 +1,19 @@
+<p>property-binding works!</p>
+
+<!-- syntax=> [attribute name/directive/custom property]="property_name" -->
+
+<input type="text" 
+[value]="name"> <br><br>
+
+<img id="myimage" [src]="ImgUrl" alt="">
+
+<hr>
+<h2> String Interpolation VS property Binding </h2>
+
+<div hidden="{{ishidden}}">
+    String Interpolation
+</div> <br><br>
+
+<div [hidden]="ishidden">
+    Property Binding
+</div>
