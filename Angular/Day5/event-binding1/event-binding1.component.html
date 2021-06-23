@@ -1,0 +1,28 @@
+<p>event-binding1 works!</p>
+
+<!-- syntax=> (eventName)="UserDefined Method" -->
+
+<button (click)="onClick()">
+    Click</button> <br><br>
+
+    <img src="../../assets/bg.jpeg"
+     alt="" (click)="onImageClick()">
+     <br><br>
+
+     <!-- $event=>it is a special variable
+         given by angular -->
+    <!-- it gives current DOM element 
+        Information -->
+
+    <button (click)="OnEvent($event)"
+    value="Doller Event Works..."
+    >Doller Event</button>
+<hr>
+<!-- template reference Variable -->
+
+    <input #myname type="text" 
+    placeholder="Enter the Name.."> <br><br>
+    <button (click)="onShow(myname)">Show me</button>
+
+
+
