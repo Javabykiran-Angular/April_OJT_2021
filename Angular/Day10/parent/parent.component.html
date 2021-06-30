@@ -1,0 +1,31 @@
+<p>parent works!</p>
+
+<!-- <app-child1 [Parentdata]="strData"></app-child1> -->
+
+<!-- <app-child1 [InChildNumData]="NumData"
+[ChildJson]="jsonobj"
+
+></app-child1> -->
+
+<!-- <button (click)="OnClick()">Send Data</button>
+
+
+
+<div >
+    <app-child1 [ChildStatus]="status"></app-child1>
+</div> -->
+<!-- <h2> {{ChildStrData}} </h2>
+
+<h2>Name :: {{childJsonData.name}} </h2>
+<h2>ID::  {{childJsonData.id}} </h2>
+<h2> Status :: {{childJsonData.status}} </h2> -->
+
+<hr>
+
+<!-- <app-child2 (childEvent1)="ChildStrData=$event"
+(childEvent2)="childJsonData=$event"
+>
+
+</app-child2> -->
+
+<app-child3 (Child3Event)="onReceiveData($event)" ></app-child3>
