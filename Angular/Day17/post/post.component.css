@@ -1,0 +1,7 @@
+table,tr,th,td{
+    border: 1px solid cadetblue;
+}
+
+button{
+    margin: 8px;
+}
