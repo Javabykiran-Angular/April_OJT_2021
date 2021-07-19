@@ -1,0 +1,40 @@
+<p>tdf-demo works!</p>
+
+<div class="container">
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                <form >
+                    <div class="form-group">
+                        <label for="">Username</label>
+                        <input type="text" class="form-control"
+                        ngModel name="myusername" #username="ngModel"
+                        required minlength="4"
+                        pattern="admin"
+                        placeholder="Enter the username">
+
+                        <div class="alert alert-danger" 
+                            *ngIf="username.touched && !username.valid"
+                        > ** Please Enter the Username
+                            <div *ngIf="username.errors.minlength">
+                                ** Mininum Length is {{username.errors.minlength.requiredLength}}
+                            </div>
+                            <div *ngIf="username.errors.pattern">
+                                ** Use Appropriate pattern
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <br>
+                    <button class="btn btn-success">Submit</button>
+
+                </form>
+
+            </div>
+        </div>
+
+
+
+</div>
