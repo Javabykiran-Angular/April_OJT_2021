@@ -1,0 +1,97 @@
+<div class="container-fluid">
+
+<app-header></app-header>
+
+<ngx-loading-bar [height]="'10px'" 
+[color]="'#28a745'" [diameter]="'30px'"></ngx-loading-bar>
+
+
+<br>
+
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+        <div>
+            <button 
+             class="btn btn-success"
+             (click)="onAddEmp()"
+             >Add Employee</button>
+            <button (click)="onEdit(popUp)" class="btn btn-warning">Update Employee</button>
+            <button (click)="onDelete()" class="btn btn-danger">Delete</button>
+            <button  (click)="onChangeStatus()" class="btn btn-info">Change Status</button>
+        
+             <div class="form-group" style="float: right;margin-top: 10px;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="font-size: 1em; ">
+                            <i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Search"
+                            style="width: min-content;" [(ngModel)]="nameSearch">
+                    </div>
+                
+                </div>
+        
+        </div>
+
+    </div>
+</div>
+
+
+<ng-template #popUp >
+    <!-- <h2>Pop Up Open</h2> -->
+    <app-upadte-employee [parentdata]="empobj"></app-upadte-employee>
+    <button (click)="modalRef.hide()" 
+    class="btn btn-danger">Cancel</button>
+</ng-template>
+
+<br>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <th>#</th>
+                <th>Action</th>
+                <th>ID</th>
+                <th>Employee Name</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Created date</th>
+                <th>Upadated Date</th>
+                <th>Country</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of EmpData | paginate: { itemsPerPage: 5, currentPage: p } 
+                | filter: nameSearch ;index as i" >
+                    <td> {{i+1}} </td>
+                    <td> <input type="radio" 
+                        name="myaction" (click)="onRadio(item)" >  </td>
+                    <td> {{item.id}} </td>
+                    <td class="nameclass"> <a  [routerLink]="['/EmployeeDetails',item.id]"> {{item.name}} </a> </td>
+                    <td> {{item.departmentit}} </td>
+                    <td> <h5 style="text-align: center;"> 
+                        <span [ngClass]="{
+                            'badge':true, 'badge-pill':true,
+                            'badge-success':item.status.toLowerCase()=='active',
+                            'badge-warning':item.status.toLowerCase()=='inactive',
+                            'badge-danger' : item.status.toLowerCase()== 'suspend'
+
+                        }" style="padding: 8px;" >
+                        {{item.status}}
+
+                    </span></h5>  </td>
+                    <td> {{item.createddtm | date:'dd-MM-yyyy'}} </td>
+                    <td> {{item.updateddtm | date:'dd-MM-yyyy'}} </td>
+                    <td> {{item.country.cname}} </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <pagination-controls class="paginateAllign" (pageChange)="p = $event"></pagination-controls> -->
+        <pagination-controls class="pull-right" (pageChange)="p = $event"></pagination-controls>
+    </div>
+
+</div>
+
+
+
+
+</div>
+
